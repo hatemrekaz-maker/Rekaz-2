@@ -1,0 +1,1 @@
+import React from 'react'; export function StatusChip({children}:{children:React.ReactNode}){ return <span style={{padding:'.25rem .6rem',borderRadius:999,background:'#f3f4f6',fontSize:12}}>{children}</span>; }

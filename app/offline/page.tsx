@@ -1,0 +1,1 @@
+export default function OfflinePage(){ return (<div className='card'><h1>أنت غير متصل</h1><p>يعمل التطبيق بدون إنترنت بعد أول زيارة. أعد الاتصال لتحديث البيانات.</p></div>); }

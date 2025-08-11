@@ -1,0 +1,1 @@
+import React from 'react'; export function KpiCard({label,value}:{label:string; value:string|number}){ return (<div className='card'><div style={{fontSize:12,color:'#6b7280'}}>{label}</div><div style={{fontSize:28,fontWeight:700}}>{value}</div></div>);}
