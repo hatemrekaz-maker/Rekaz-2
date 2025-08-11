@@ -1,0 +1,22 @@
+import jsPDF from 'jspdf';
+
+export async function exportPDFMonthlySummary(records: any[], monthISO: string){
+  const doc = new jsPDF();
+  doc.setFontSize(16);
+  doc.text('Monthly Summary', 14, 18);
+  doc.setFontSize(10);
+  doc.text('Month: ' + monthISO, 14, 26);
+  if(records.length === 0){
+    doc.setFontSize(12);
+    doc.text('No data', 14, 40);
+  } else {
+    let y = 40;
+    doc.setFontSize(12);
+    for(const r of records.slice(0, 40)){ // avoid huge pages
+      doc.text(`- ${r.refType} ${r.refNumber} (${r.company})`, 14, y);
+      y += 6;
+      if(y > 280){ doc.addPage(); y = 20; }
+    }
+  }
+  return doc.output('blob');
+}

@@ -1,0 +1,69 @@
+
+:root{
+  --radius: 16px;
+  --shadow-in: inset 2px 2px 4px rgba(0,0,0,.2), inset -2px -2px 4px rgba(255,255,255,.5);
+  --shadow-out: 0 10px 20px rgba(0,0,0,.12);
+  --oml-1:#0d47a1; --oml-2:#42a5f5; /* Oman Oil blues */
+  --nam-1:#b71c1c; --nam-2:#ef5350; /* NAMA reds */
+  --bg:#f6f7fb; --fg:#0a0a0a; --muted:#6b7280; --card:#ffffff;
+}
+
+html, body { height: 100%; background: var(--bg); color: var(--fg); }
+* { box-sizing: border-box; }
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+.grid { display:grid; gap: 1rem; }
+.grid.kpi { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+.card{
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow-out);
+  padding: 1rem;
+}
+
+.concave{
+  border-radius: 999px;
+  background: linear-gradient(145deg, rgba(255,255,255,.8), rgba(0,0,0,.02));
+  box-shadow: var(--shadow-in), 0 8px 20px rgba(0,0,0,.08);
+  padding: .75rem 1.1rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+header.topbar{
+  position: sticky; top: 0; z-index: 40; backdrop-filter: blur(6px);
+  background: linear-gradient(90deg, rgba(255,255,255,.7), rgba(255,255,255,.5));
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.badge{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.3rem .6rem; border-radius:999px; font-size:.8rem;
+  background:#f3f4f6; color:#111827;
+}
+
+.kv{ font-size:.8rem; color: var(--muted);}
+.kv strong{ display:block; color: var(--fg); font-size:1.6rem;}
+
+.theme-oml .brand-grad { background: linear-gradient(135deg, var(--oml-2), var(--oml-1)); -webkit-background-clip: text; background-clip: text; color: transparent;}
+.theme-nam .brand-grad { background: linear-gradient(135deg, var(--nam-2), var(--nam-1)); -webkit-background-clip: text; background-clip: text; color: transparent;}
+
+hr.sep{ border:0; height:1px; background: linear-gradient(90deg, transparent, rgba(0,0,0,.08), transparent); margin: 1rem 0; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .motion { transition: none !important; transform: none !important; animation: none !important; }
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: .6rem .8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.1);
+  outline: none;
+  background: #fff;
+}
+label { display:block; font-size:.85rem; color:#374151; margin-bottom:.3rem; }

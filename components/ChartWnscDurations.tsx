@@ -1,0 +1,22 @@
+'use client';
+import React from 'react';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+
+export function ChartWnscDurations({ data }:{data: {bin:string, count:number}[]}){
+  if(!data || data.length === 0){
+    return <div className="card" aria-live="polite">No data yet</div>;
+  }
+  return (
+    <div className="card" style={{height:320}}>
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="bin" />
+          <YAxis allowDecimals={false} />
+          <Tooltip />
+          <Bar dataKey="count" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}

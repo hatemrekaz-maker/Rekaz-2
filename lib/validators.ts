@@ -1,0 +1,35 @@
+import { z } from 'zod';
+
+export const WOStatusEnum = z.enum(['Open','WaitForApproval','Approved','Completed']);
+
+export const WORecordSchema = z.object({
+  id: z.string().uuid(),
+  company: z.literal('OMAN_OIL'),
+  refType: z.literal('WO'),
+  refNumber: z.string().min(1, 'Required'),
+  date: z.number(), // epoch ms
+  status: WOStatusEnum,
+  description: z.string().optional(),
+  photosBefore: z.array(z.string()).optional(),
+  photosAfter: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional(),
+  createdAt: z.number(),
+  updatedAt: z.number()
+});
+
+export const WNSCRecordSchema = z.object({
+  id: z.string().uuid(),
+  company: z.literal('NAMA'),
+  refType: z.literal('WNSC'),
+  refNumber: z.string().min(1, 'Required'),
+  startDate: z.number(),
+  endDate: z.number().optional(),
+  durationDays: z.number().optional(),
+  notes: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  createdAt: z.number(),
+  updatedAt: z.number()
+});
+
+export type WOFormInput = z.infer<typeof WORecordSchema>;
+export type WNSCFormInput = z.infer<typeof WNSCRecordSchema>;
